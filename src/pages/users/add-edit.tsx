@@ -1,7 +1,7 @@
 import UsersForm from "../../components/users/users-form";
 
-const AddUser = () => {
+const AddEditUser = () => {
   return <UsersForm />;
 };
 
-export default AddUser;
+export default AddEditUser;

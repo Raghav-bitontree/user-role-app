@@ -106,6 +106,7 @@ export function createRole(payload: any) {
         ? JSON.parse(localStorage.getItem("roles") as string)
         : [];
       payload.values.id = Date.now();
+      payload.values.roleKey = payload?.values?.roleLabel?.toLowerCase().trim();
       localStorage.setItem("roles", JSON.stringify([payload, ...savedRoles]));
       dispatch(getRoles([payload, ...savedRoles]));
     } catch (err) {

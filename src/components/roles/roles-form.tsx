@@ -33,7 +33,7 @@ const RolesForm = () => {
       dispatch(
         updateRoleById({
           id: params?.id,
-          roleKey: values.roleKey,
+          roleKey: values?.roleLabel.toLowerCase().trim(),
           roleLabel: values?.roleLabel,
         }) as any
       );
@@ -46,7 +46,6 @@ const RolesForm = () => {
   useEffect(() => {
     if (params?.id)
       setRoleFormValue({
-        roleKey: role?.values.roleKey,
         roleLabel: role?.values?.roleLabel,
       });
     else setRoleFormValue(roleValues);
@@ -73,24 +72,9 @@ const RolesForm = () => {
           }) => (
             <form className={innerFormContainer} onSubmit={handleSubmit}>
               <TextField
+                id="outlined-basic"
                 sx={textFieldCss}
-                id="outlined-basic"
-                label="Role Key"
-                variant="outlined"
-                type="text"
-                name="roleKey"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.roleKey}
-              />
-
-              {errors.roleKey && touched.roleKey && errors.roleKey ? (
-                <span className={formikError}> {errors.roleKey as any}</span>
-              ) : null}
-
-              <TextField
-                id="outlined-basic"
-                label="Role Label"
+                label="Role"
                 variant="outlined"
                 type="text"
                 name="roleLabel"

@@ -4,7 +4,7 @@ const initialState = {
   users: [] as any,
 };
 
-export const usersSlice = createSlice({
+export const usersSlice: any = createSlice({
   name: "users",
   initialState,
   reducers: {
@@ -65,7 +65,6 @@ export function deleteUserById(userId: string) {
 }
 
 export function updateUserById(payload: any) {
-  console.log(payload);
   return (dispatch: (arg: any) => void) => {
     try {
       const response = JSON.parse(localStorage.getItem("users") as string);
@@ -73,7 +72,6 @@ export function updateUserById(payload: any) {
       const findUser = response.find(
         (user: any) => user.values.id === Number(payload.id)
       );
-      console.log(findUser);
       if (findUser) {
         findUser.values.name = payload.name;
         findUser.values.username = payload.username;

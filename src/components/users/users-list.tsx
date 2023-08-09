@@ -6,7 +6,7 @@ import {
   titleContainer,
 } from "../../styles/style";
 import { Button } from "@mui/material";
-import { primaryButton, secondaryButton } from "../../styles/material-styles";
+import { primaryButton } from "../../styles/material-styles";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import {
@@ -34,9 +34,6 @@ const UsersList = () => {
         <div className={titleContainer}>
           <h2> Users List </h2>
           <div className={buttonContainer}>
-            <Button onClick={() => navigate(routes.role)} sx={secondaryButton}>
-              Role List
-            </Button>
             <Button onClick={() => navigate(routes.addUser)} sx={primaryButton}>
               Add User
             </Button>

@@ -4,10 +4,8 @@ import Roles from "./pages/roles";
 import { routes } from "./utils/constants";
 import Header from "./components/header";
 import { Providers } from "./redux/features/provider";
-import AddUser from "./pages/users/add";
-import EditUser from "./pages/users/edit";
-import AddRole from "./pages/roles/add";
-import EditRole from "./pages/roles/edit";
+import AddEditRole from "./pages/roles/add-edit";
+import AddEditUser from "./pages/users/add-edit";
 
 function App() {
   return (
@@ -18,10 +16,10 @@ function App() {
           <Route path="/" element={<Users />} />
           <Route path={routes.user} element={<Users />} />
           <Route path={routes.role} element={<Roles />} />
-          <Route path={routes.addUser} element={<AddUser />} />
-          <Route path={routes.editUser + ":id"} element={<EditUser />} />
-          <Route path={routes.addRole} element={<AddRole />} />
-          <Route path={routes.editRole + ":id"} element={<EditRole />} />
+          <Route path={routes.addUser} element={<AddEditUser />} />
+          <Route path={routes.editUser + ":id"} element={<AddEditUser />} />
+          <Route path={routes.addRole} element={<AddEditRole />} />
+          <Route path={routes.editRole + ":id"} element={<AddEditRole />} />
         </Routes>
       </Providers>
     </>

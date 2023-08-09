@@ -43,7 +43,6 @@ export const userValues = {
 
 export const roleValues = {
   roleLabel: "",
-  roleKey: "",
 };
 
 const emailregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -74,12 +73,6 @@ export const UserSchema = Yup.object().shape({
   password: Yup.string().trim().required("Password is Required!"),
 });
 
-export const UserEditSchema = Yup.object().shape({
-  ...userSchemaTemplate,
-  password: Yup.string().trim(),
-});
-
 export const RoleSchema = Yup.object().shape({
-  roleKey: Yup.string().required("Role key is Required"),
-  roleLabel: Yup.string().required("Role Label is Required"),
+  roleLabel: Yup.string().required("Role is Required"),
 });

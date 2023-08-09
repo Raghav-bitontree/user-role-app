@@ -1,11 +1,6 @@
 import { Formik } from "formik";
 import FormContainer from "../common/form/form-container";
-import {
-  UserEditSchema,
-  UserSchema,
-  routes,
-  userValues,
-} from "../../utils/constants";
+import { UserSchema, routes, userValues } from "../../utils/constants";
 import { Button, MenuItem, TextField } from "@mui/material";
 import { formikError, innerFormContainer } from "../../styles/style";
 import {
@@ -70,7 +65,7 @@ const UsersForm = () => {
         roleKey: user?.values?.roleKey,
       });
     else setUserFormValue(userValues);
-  }, []);
+  }, [params?.id, user]);
 
   useEffect(() => {
     dispatch(fetchRoles() as any);
@@ -83,7 +78,7 @@ const UsersForm = () => {
         <Formik
           enableReinitialize
           initialValues={!params?.id ? userValues : userFormValue}
-          validationSchema={!params?.id ? UserSchema : UserEditSchema}
+          validationSchema={UserSchema}
           onSubmit={(values) => handleSubmit(values)}
         >
           {({

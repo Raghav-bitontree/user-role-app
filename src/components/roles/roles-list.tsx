@@ -6,7 +6,7 @@ import {
   titleContainer,
 } from "../../styles/style";
 import { Button } from "@mui/material";
-import { primaryButton, secondaryButton } from "../../styles/material-styles";
+import { primaryButton } from "../../styles/material-styles";
 import { useNavigate } from "react-router-dom";
 import {
   deleteRole,
@@ -33,9 +33,6 @@ const RolesList = () => {
         <div className={titleContainer}>
           <h2> Roles List </h2>
           <div className={buttonContainer}>
-            <Button onClick={() => navigate(routes.user)} sx={secondaryButton}>
-              User List
-            </Button>
             <Button onClick={() => navigate(routes.addRole)} sx={primaryButton}>
               Add Role
             </Button>

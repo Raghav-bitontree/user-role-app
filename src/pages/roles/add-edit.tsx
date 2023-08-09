@@ -1,7 +1,7 @@
 import RolesForm from "../../components/roles/roles-form";
 
-const EditRole = () => {
+const AddEditRole = () => {
   return <RolesForm />;
 };
 
-export default EditRole;
+export default AddEditRole;
