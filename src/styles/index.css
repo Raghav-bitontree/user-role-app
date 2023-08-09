@@ -6,3 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.css-1w1rijm-MuiButtonBase-root-MuiButton-root {
+  padding-left: 0px !important;
+}

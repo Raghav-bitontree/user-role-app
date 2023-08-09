@@ -32,6 +32,10 @@ const UsersForm = () => {
     (item: any) => item?.values?.id === Number(params?.id)
   );
 
+  const res = getRolesForSelect(roles).find(
+    (item: any) => item?.label === user?.values?.roleKey
+  );
+
   const handleSubmit = (values: any) => {
     if (params?.id) {
       dispatch(
@@ -165,7 +169,12 @@ const UsersForm = () => {
                 <span className={formikError}> {errors.mobile as any}</span>
               ) : null}
 
-              <TextField select name={"roleKey"} label="Select Role">
+              <TextField
+                defaultValue={res?.label}
+                select
+                name={"roleKey"}
+                label="Select Role"
+              >
                 {getRolesForSelect(roles).map((option: any) => (
                   <MenuItem
                     key={option.value}
