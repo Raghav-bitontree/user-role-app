@@ -22,6 +22,7 @@ const RolesForm = () => {
   const navigate = useNavigate();
   const params = useParams();
   const [roleFormValue, setRoleFormValue] = useState(roleValues);
+  const [uniqueRoleError, setUniqueRoleError] = useState(false);
   const roles = useSelector((state: any) => state.roles.roles);
 
   const role = roles?.find(
@@ -29,18 +30,30 @@ const RolesForm = () => {
   );
 
   const handleSubmit = (values: any) => {
+    const findExistingRole = roles?.find(
+      (item: any) =>
+        item?.values?.roleKey === values?.roleLabel?.toLowerCase()?.trim()
+    );
     if (params?.id) {
-      dispatch(
-        updateRoleById({
-          id: params?.id,
-          roleKey: values?.roleLabel.toLowerCase().trim(),
-          roleLabel: values?.roleLabel,
-        }) as any
-      );
+      if (findExistingRole?.values?.id !== role?.values?.id) {
+        setUniqueRoleError(true);
+      } else {
+        dispatch(
+          updateRoleById({
+            id: params?.id,
+            roleKey: values?.roleLabel.toLowerCase().trim(),
+            roleLabel: values?.roleLabel,
+          }) as any
+        );
+        navigate(routes.role);
+      }
     } else {
-      dispatch(createRole({ values }) as any);
+      if (findExistingRole) setUniqueRoleError(true);
+      else {
+        dispatch(createRole({ values }) as any);
+        navigate(routes.role);
+      }
     }
-    navigate(routes.role);
   };
 
   useEffect(() => {
@@ -86,8 +99,11 @@ const RolesForm = () => {
               {errors.roleLabel && touched.roleLabel && errors.roleLabel ? (
                 <span className={formikError}> {errors.roleLabel as any}</span>
               ) : null}
+              {uniqueRoleError ? (
+                <span className={formikError}> Role already exists</span>
+              ) : null}
 
-              <Button type="submit" sx={primaryButton} disabled={isSubmitting}>
+              <Button type="submit" sx={primaryButton}>
                 Submit
               </Button>
             </form>
