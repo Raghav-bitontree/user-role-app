@@ -30,12 +30,16 @@ const RolesForm = () => {
   );
 
   const handleSubmit = (values: any) => {
+    console.log(values?.roleLabel?.toLowerCase()?.trim());
     const findExistingRole = roles?.find(
       (item: any) =>
         item?.values?.roleKey === values?.roleLabel?.toLowerCase()?.trim()
     );
     if (params?.id) {
-      if (findExistingRole?.values?.id !== role?.values?.id) {
+      if (
+        findExistingRole &&
+        findExistingRole?.values?.id !== role?.values?.id
+      ) {
         setUniqueRoleError(true);
       } else {
         dispatch(
