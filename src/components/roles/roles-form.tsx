@@ -24,7 +24,7 @@ const RolesForm = () => {
   const [roleFormValue, setRoleFormValue] = useState(roleValues);
   const roles = useSelector((state: any) => state.roles.roles);
 
-  const role = roles.find(
+  const role = roles?.find(
     (item: any) => item?.values?.id === Number(params?.id)
   );
 
