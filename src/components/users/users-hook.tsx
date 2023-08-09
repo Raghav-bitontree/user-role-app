@@ -30,11 +30,11 @@ export default function useUsers() {
           dat?.values?.mobile,
           dat?.values?.roleKey,
           <div style={{ display: "flex", gap: "2px" }}>
-            <IconButton>
-              <Edit sx={iconCss} onClick={() => handleEdit(dat?.values)} />
+            <IconButton onClick={() => handleEdit(dat?.values)}>
+              <Edit sx={iconCss} />
             </IconButton>
-            <IconButton>
-              <Delete sx={iconCss} onClick={() => handleDelete(dat?.values)} />
+            <IconButton onClick={() => handleDelete(dat?.values)}>
+              <Delete sx={iconCss} />
             </IconButton>
           </div>,
         ];
