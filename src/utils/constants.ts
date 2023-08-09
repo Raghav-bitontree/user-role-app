@@ -47,8 +47,6 @@ export const roleValues = {
 };
 
 const emailregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const passwordregex =
-  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 const nameRegExp = /^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$/;
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -73,17 +71,12 @@ const userSchemaTemplate = {
 
 export const UserSchema = Yup.object().shape({
   ...userSchemaTemplate,
-  password: Yup.string()
-    .trim()
-    .matches(passwordregex, "Password must be strong!")
-    .required("Password is Required!"),
+  password: Yup.string().trim().required("Password is Required!"),
 });
 
 export const UserEditSchema = Yup.object().shape({
   ...userSchemaTemplate,
-  password: Yup.string()
-    .trim()
-    .matches(passwordregex, "Password must be strong!"),
+  password: Yup.string().trim(),
 });
 
 export const RoleSchema = Yup.object().shape({
