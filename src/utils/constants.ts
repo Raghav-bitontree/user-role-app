@@ -18,7 +18,7 @@ export const options: any = {
   print: false,
   viewColumns: false,
   filter: false,
-  selectableRows: false,
+  selectableRows: "none",
 };
 
 export const userColumns = [
